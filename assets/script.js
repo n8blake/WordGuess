@@ -76,11 +76,6 @@ function guessLetter(event){
 						letterElement.innerHTML = word.charAt(i);
 						timeLeft += 1000;
 					}
-					// if(won(word, guessedLetters)){
-					// 	clearInterval(timerInterval);
-					// 	document.querySelector("#start-button").style.display = "block";
-					// 	timeDiv.innerHTML = "YOU WON!";
-					// }
 				}
 				let guessedLetterElement = document.createElement("span");
 				guessedLetterElement.setAttribute("id", "guess-" + letter);
@@ -100,7 +95,7 @@ function won(word, letters){
 	for(var i = 0; i < word.length; i++){
 		if(!letters.includes(word.charAt(i))) return false;
 	}
-	return true;
+	return word.length > 0;
 }
 
 function isLetter(string) {

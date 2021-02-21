@@ -67,3 +67,7 @@ span.unguessed::before {
 #time-div {
 	display: none;
 }
+
+#start-button {
+	display: none;
+}
