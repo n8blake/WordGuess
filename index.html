@@ -4,17 +4,24 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-		<title></title>
+		<title>WordGuess!</title>
+		<link rel="stylesheet" href="assets/reset.css" />
 		<link rel="stylesheet" href="assets/styles.css" />
 		
 	</head>
 	<body>
 		<header>
 			<p>Type a letter to make a guess. You may guess as many times as you need, but be quick! The game is timed, every wrong guess takes time off the timer and every correct guess adds a little bit of time back.</p>
+			<button onClick="startGame()" id="start-button">Play Game!</button>
+			<div id="time-div">TIME</div>
 		</header>
-		<main>
+		<main class="game-stopped">
 			<div class="word-container">
 				
+			</div>
+			<div>
+				<p>Guesses:</p>
+				<p class="guessed-letters"></p>
 			</div>
 		</main>
 		<script src="assets/script.js"></script>

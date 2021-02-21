@@ -1,0 +1,37 @@
+body {
+	font-family: "SF Pro", "Helvetica", sans-serif;
+}
+
+.word-container {
+	display: flex;
+	flex-wrap: nowrap;
+}
+
+.letter {
+	font-size: 36pt;
+	font-family: monospace;
+	padding: 5pt;
+	flex: 1 1 36pt;
+	visibility: visible;
+}
+
+.unguessed {
+	visibility: hidden;
+
+}
+
+span.unguessed::before {
+	visibility: visible;
+	content: "_";
+}
+
+.game-stopped {
+	display: none;
+}
+.game-running {
+	display: block;
+}
+
+#time-div {
+	display: none;
+}
