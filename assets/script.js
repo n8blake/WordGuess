@@ -3,28 +3,30 @@ const wordURL = "https://random-word-api.herokuapp.com/word?number=1";
 var fetchWord = fetch(wordURL);
 
 var word = "";
-var definitions = [];
+var dictionaryEntry = {};
 
 // process the fetched word
 const processFetchWord = function(_word){
 	return _word.then(response => response.json())
 	.then(data => {
 		_word = data[0];
-		window.word = _word;
-		console.log(window.word);
-		for(var i = 0; i < _word.length; i++){
-			let letterElement = document.createElement("span");
-			//letterElement.innerHTML = word.charAt(i);
-			letterElement.setAttribute("id", "letter-" + i);
-			letterElement.classList.add("letter");
-			letterElement.classList.add("unguessed");
-			wordElement.appendChild(letterElement);
-		}
+		//console.log(window.word);
 		fetchDefinition(_word).then((value) => {
 			//console.log(value);
 			if(value === 404){
 				fetchWord = fetch(wordURL);
 				fetchWord.then(processFetchWord(fetchWord));
+			} else {
+				window.word = _word;
+				console.log(dictionaryEntry);
+				for(var i = 0; i < _word.length; i++){
+					let letterElement = document.createElement("span");
+					//letterElement.innerHTML = word.charAt(i);
+					letterElement.setAttribute("id", "letter-" + i);
+					letterElement.classList.add("letter");
+					letterElement.classList.add("unguessed");
+					wordElement.appendChild(letterElement);
+				}
 			}
 		});
 	});
@@ -50,7 +52,7 @@ const fetchDefinition = function(word){
 })
   .then(data => {
   	//console.log(data);
-  	definitions = data;
+  	dictionaryEntry = data;
   	return data;
   });
 } 
@@ -74,11 +76,11 @@ function guessLetter(event){
 						letterElement.innerHTML = word.charAt(i);
 						timeLeft += 1000;
 					}
-					if(won(word, guessedLetters)){
-						clearInterval(timerInterval);
-						document.querySelector("#start-button").style.display = "block";
-						timeDiv.innerHTML = "YOU WON!";
-					}
+					// if(won(word, guessedLetters)){
+					// 	clearInterval(timerInterval);
+					// 	document.querySelector("#start-button").style.display = "block";
+					// 	timeDiv.innerHTML = "YOU WON!";
+					// }
 				}
 				let guessedLetterElement = document.createElement("span");
 				guessedLetterElement.setAttribute("id", "guess-" + letter);

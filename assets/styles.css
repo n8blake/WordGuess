@@ -2,6 +2,38 @@ body {
 	font-family: "SF Pro", "Helvetica", sans-serif;
 }
 
+h1, h2, h3, h4, h5, h6 {
+	font-weight: bolder;
+	text-transform: uppercase;
+}
+
+p {
+	font-size: 14pt;
+	line-height: 17pt;
+	font-weight: 300;
+}
+
+header {
+	margin: 20pt;
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	justify-content: center;
+}
+
+header>h1 {
+	font-size: 36pt;
+	width: 100%;
+	align-self: center;
+	text-align: center;
+}
+
+header>p {
+	margin: 20pt;
+	font-size: 18pt;
+	line-height: 24pt;
+}
+
 .word-container {
 	display: flex;
 	flex-wrap: nowrap;
@@ -25,9 +57,9 @@ span.unguessed::before {
 	content: "_";
 }
 
-.game-stopped {
+/*.game-stopped {
 	display: none;
-}
+}*/
 .game-running {
 	display: block;
 }

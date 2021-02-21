@@ -1,0 +1,27 @@
+.btn {
+	box-shadow:inset 0pt 1pt 0pt 0pt #f5978e;
+	background:linear-gradient(to bottom, #f24537 5%, #c62d1f 100%);
+	background-color:#f24537;
+	border-radius:6pt;
+	border:1pt solid #d02718;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-size:24pt;
+	font-weight:bold;
+	padding:6pt 24pt;
+	text-decoration:none;
+	text-shadow:0pt 1pt 0pt #810e05;
+	margin: 20pt;
+}
+.btn:hover {
+	background:linear-gradient(to bottom, #c62d1f 5%, #f24537 100%);
+	background-color:#c62d1f;
+}
+.btn:active {
+	position:relative;
+	top:1pt;
+}
+button:focus {
+	outline:0;
+}
