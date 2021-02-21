@@ -1,28 +1,18 @@
 const wordElement = document.querySelector(".word-container");
 const wordURL = "https://random-word-api.herokuapp.com/word?number=1";
-const fetchWord = fetch(wordURL);
+var fetchWord = fetch(wordURL);
 
 var word = "";
 var definitions = [];
 
-function startGame(){
-	let main = document.querySelector("main");
-	main.classList.remove("game-stopped");
-	main.classList.add("game-running");
-	document.querySelector("#start-button").style.display = "none";
-	document.querySelector("#time-div").style.display = "block";
-}
-
-
-
 // process the fetched word
-const processFetchWord = function(word){
-	return word.then(response => response.json())
+const processFetchWord = function(_word){
+	return _word.then(response => response.json())
 	.then(data => {
-		word = data[0];
-		window.word = word;
-		console.log(word);
-		for(var i = 0; i < word.length; i++){
+		_word = data[0];
+		window.word = _word;
+		console.log(window.word);
+		for(var i = 0; i < _word.length; i++){
 			let letterElement = document.createElement("span");
 			//letterElement.innerHTML = word.charAt(i);
 			letterElement.setAttribute("id", "letter-" + i);
@@ -30,7 +20,13 @@ const processFetchWord = function(word){
 			letterElement.classList.add("unguessed");
 			wordElement.appendChild(letterElement);
 		}
-		fetchDefinition(word);
+		fetchDefinition(_word).then((value) => {
+			//console.log(value);
+			if(value === 404){
+				fetchWord = fetch(wordURL);
+				fetchWord.then(processFetchWord(fetchWord));
+			}
+		});
 	});
 }
 
@@ -45,14 +41,17 @@ const fetchDefinition = function(word){
 	}
 }).then(response => {
 	console.log(response.status);
-	/* if(response.status === 404){
-		return fetchWord.then(processFetchWord(fetchWord));
-	} */
-	return response.json();
+	if(response.status === 404){
+		return response.status;
+		//resolve('Fail!');
+	} else {
+		return response.json();
+	}
 })
   .then(data => {
-  	console.log(data);
+  	//console.log(data);
   	definitions = data;
+  	return data;
   });
 } 
 
@@ -73,6 +72,12 @@ function guessLetter(event){
 						letterElement = document.querySelector("#letter-" + i);
 						letterElement.classList.remove("unguessed");
 						letterElement.innerHTML = word.charAt(i);
+						timeLeft += 1000;
+					}
+					if(won(word, guessedLetters)){
+						clearInterval(timerInterval);
+						document.querySelector("#start-button").style.display = "block";
+						timeDiv.innerHTML = "YOU WON!";
 					}
 				}
 				let guessedLetterElement = document.createElement("span");
@@ -85,6 +90,15 @@ function guessLetter(event){
 	} else {
 		console.log("not ready");
 	}
+}
+
+// won
+// when all the letters from the word have been guessed
+function won(word, letters){
+	for(var i = 0; i < word.length; i++){
+		if(!letters.includes(word.charAt(i))) return false;
+	}
+	return true;
 }
 
 function isLetter(string) {
