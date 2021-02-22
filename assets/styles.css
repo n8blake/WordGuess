@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,400;1,500;1,700;1,900&display=swap');
+
 body {
-	font-family: "SF Pro", "Helvetica", sans-serif;
+	font-family: "Roboto", "Helvetica", sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -10,7 +12,7 @@ h1, h2, h3, h4, h5, h6 {
 p {
 	font-size: 14pt;
 	line-height: 17pt;
-	font-weight: 300;
+	font-weight: 100;
 }
 
 header {
@@ -34,9 +36,19 @@ header>p {
 	line-height: 24pt;
 }
 
+header>#time-div {
+	width: 100%;
+	text-align: center;
+	align-self: center;
+	font-size: 36pt;
+	font-weight: 600;
+}
+
 .word-container {
 	display: flex;
 	flex-wrap: nowrap;
+	justify-content: space-between;
+	margin: 20pt;
 }
 
 .letter {
@@ -45,6 +57,7 @@ header>p {
 	padding: 5pt;
 	flex: 1 1 36pt;
 	visibility: visible;
+	text-align: center;
 }
 
 .unguessed {
@@ -57,17 +70,25 @@ span.unguessed::before {
 	content: "_";
 }
 
-/*.game-stopped {
-	display: none;
-}*/
+.game-stopped {
+	/*display: none;*/
+}
+
 .game-running {
 	display: block;
 }
 
 #time-div {
-	display: none;
+	/*display: none;*/
 }
 
 #start-button {
 	display: none;
 }
+
+
+
+
+
+
+

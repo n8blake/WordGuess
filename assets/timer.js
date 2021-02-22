@@ -6,30 +6,32 @@ var timerInterval;
 
 function startGame(){
 	if(word.length == 0) return;
+	gameRunning = true;
 	let main = document.querySelector("main");
 	main.classList.remove("game-stopped");
 	main.classList.add("game-running");
 	startBtn.style.display = "none";
 	timeDiv.style.display = "block";
-	timerInterval = setInterval(countDown, 10);
+	timerInterval = setInterval(countDown, 100);
 }
 
 function endGame(){
+	clearInterval(timerInterval);
 	// show all the letters if they haven't been guessed
-
+	gameRunning = false;
 	// show the definition of the word and usage
 
 }
 
 function countDown(){
-	timeDiv.innerHTML = timeLeft / 10;
+	timeDiv.innerHTML = timeLeft / 100;
 	if(timeLeft <= 0){
-		clearInterval(timerInterval);
+		endGame();
 	}
 	if(won(word, guessedLetters)){
-		clearInterval(timerInterval);
+		endGame();
 		document.querySelector("#start-button").style.display = "block";
 		timeDiv.innerHTML = "YOU WON!";
 	}
-	timeLeft -= 10;
+	timeLeft -= 100;
 }

@@ -7,39 +7,39 @@
 		<title>WordGuess!</title>
 		<link rel="stylesheet" href="assets/reset.css" />
 		<link rel="stylesheet" href="assets/styles.css" />
+		<link rel="stylesheet" type="text/css" href="assets/definitionsStyles.css">
 		<link rel="stylesheet" type="text/css" href="assets/buttonStyles.css">
+
 	</head>
 	<body>
 		<header>
 			<h1>WordGuess!</h1>
 			<p>Type a letter to make a guess. You may guess as many times as you need, but be quick! The game is timed, every wrong guess takes time off the timer and every correct guess adds a little bit of time back.</p>
 			<button class="btn" onClick="startGame()" id="start-button">Play Game!</button>
-			<div id="time-div"></div>
+			<div id="time-div">59.48</div>
 		</header>
 		<main class="game-stopped">
 			<div class="word-container">
 				
 			</div>
-			<div>
-				<h4>Pronuciation: </h4>
-				<span>lorum ipsum</span>
+			<div id="definitions-div">
+				<!--<h3>Pronuciation</h3>
+				<p>lorum ipsum</p>
 				<h3>Definitions</h3>
 				<ul>
-					<h4>type</h4>
-					<img src="https://via.placeholder.com/150">
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-				</ul>
+					<li>
+						<h4>type</h4>
+						<p class="definition">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+						<p class="example">Lorem ipsum is used as placeholder text.</p>
+					<li>
+				</ul>-->
 			</div>
 			<div>
 				<p>Guesses:</p>
 				<p class="guessed-letters"></p>
 			</div>
 		</main>
+		<script src="assets/functions.js"></script>
 		<script src="assets/timer.js"></script>
 		<script src="assets/script.js"></script>
 	</body>
