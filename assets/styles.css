@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,400;1,500;1,700;1,900&display=swap');
+@import url("https://use.typekit.net/nik2nzf.css");
 
 body {
 	font-family: "Roboto", "Helvetica", sans-serif;
@@ -9,10 +10,18 @@ h1, h2, h3, h4, h5, h6 {
 	text-transform: uppercase;
 }
 
+b {
+	font-weight: bold;
+}
+
 p {
 	font-size: 14pt;
 	line-height: 17pt;
 	font-weight: 100;
+}
+
+p>b {
+	font-weight: 500;
 }
 
 header {
@@ -52,17 +61,64 @@ header>#time-div {
 }
 
 .letter {
-	font-size: 36pt;
-	font-family: monospace;
+	font-family: "t26-carbon", monospace;
+	font-weight: 700;
+	font-style: bold;
+	font-size: 48pt;
 	padding: 5pt;
 	flex: 1 1 36pt;
 	visibility: visible;
 	text-align: center;
+	text-transform: uppercase;
 }
 
 .unguessed {
 	visibility: hidden;
+}
 
+#guesses-title {
+	text-align: center;
+	color: #AEB9B9;
+}
+
+p.guessed-letters {
+	width: 100%;
+	padding: 20pt;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+span.guessed {
+	font-size: 50pt;
+	flex: 1 1 28pt;
+	display: inline-block;
+	width: 50pt;
+	max-width: 50pt;
+	height: 50pt;
+	max-height: 50pt;
+	text-align: center;
+	margin: 10pt;
+	color: #AEB9B9;
+}
+
+span.letter.guessed.already {
+	animation: pulseGuessAlready 1s;
+}
+
+@keyframes pulseGuessAlready {
+  0% {
+    color: #AEB9B9;
+  }
+  10% {
+    color: #c62d1f;
+  }
+  35% {
+    color: #c62d1f;
+  }
+  100% {
+    color: #AEB9B9;
+  }
 }
 
 span.unguessed::before {
@@ -79,7 +135,7 @@ span.unguessed::before {
 }
 
 #time-div {
-	/*display: none;*/
+	display: none;
 }
 
 #start-button {
