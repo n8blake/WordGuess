@@ -14,11 +14,12 @@
 	<body>
 		<header>
 			<h1>WordGuess!</h1>
-			<p>Type a letter to make a guess. You may guess as many times as you need, but be quick! The game is timed, every wrong guess takes time off the timer and every correct guess adds a little bit of time back.</p>
+			<p id="instructions">Type a letter to make a guess. You may guess as many times as you need, but be quick! The game is timed, every wrong guess takes time off the timer and every correct guess adds a little bit of time back.</p>
 			<button class="btn" onClick="startGame()" id="start-button">Play Game!</button>
 			<div id="time-div">59.48</div>
 		</header>
 		<main class="game-stopped">
+			<h4 id="word-message"></h4>
 			<div class="word-container">
 				
 			</div>
@@ -34,9 +35,10 @@
 					<li>
 				</ul>-->
 			</div>
-			<div>
-				<p>Guesses:</p>
-				<p class="guessed-letters"></p>
+			<div id="guesses-div">
+				<h4 id="guesses-title">Guesses</h4>
+				<p class="guessed-letters">
+				</p>
 			</div>
 		</main>
 		<script src="assets/functions.js"></script>

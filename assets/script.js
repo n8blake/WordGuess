@@ -6,7 +6,7 @@ var word = "";
 var dictionaryEntry = {};
 var gameRunning = false;
 
-//fetchWord.then(processFetchWord(fetchWord));
+fetchWord.then(processFetchWord(fetchWord));
 
 var guessedLetters = [];
 const guessedLettersElement = document.querySelector(".guessed-letters");
@@ -15,7 +15,8 @@ function guessLetter(event){
 	if(word.length > 0 && gameRunning){
 		if(isLetter(event.key)){
 			const letter = event.key.toLowerCase();
-			console.log(letter);
+			//console.log(letter);
+			var wrongGuess = true;
 			if(!guessedLetters.includes(letter)){
 				guessedLetters.push(letter);
 				for(var i = 0; i < word.length; i++){
@@ -24,7 +25,11 @@ function guessLetter(event){
 						letterElement.classList.remove("unguessed");
 						letterElement.innerHTML = word.charAt(i);
 						timeLeft += 1000;
+						wrongGuess = false;
 					}
+				}
+				if(wrongGuess){
+					timeLeft -= 2000;
 				}
 				let guessedLetterElement = document.createElement("span");
 				guessedLetterElement.setAttribute("id", "guess-" + letter);
@@ -32,6 +37,9 @@ function guessLetter(event){
 				guessedLetterElement.classList.add("guessed");
 				guessedLetterElement.innerHTML = letter;
 				guessedLettersElement.appendChild(guessedLetterElement);
+			} else {
+				highlightLetter(event);
+				timeLeft -= 2000;
 			}
 		}
 	} else {
@@ -69,4 +77,4 @@ function isLetter(string) {
 }
 
 document.addEventListener("keydown", guessLetter);
-document.addEventListener("keydown", highlightLetter);
+//document.addEventListener("keydown", highlightLetter);
